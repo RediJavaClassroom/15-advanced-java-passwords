@@ -45,6 +45,11 @@ Testcontainers
 
 ----
 
+## Can we store passwords as plain text?
+
+???
+
+---
 
 ## Hashing
 
@@ -52,6 +57,22 @@ Testcontainers
 
 ![](img/class15-hashing.png)
 From https://auth0.com/blog/hashing-passwords-one-way-road-to-security/
+
+----
+
+## How reverse is MD5?
+
+Sometimes it is
+https://md5.gromweb.com/?md5=482c811da5d5b4bc6d497ffa98491e38
+
+----
+
+## Salt 🧂
+
+![](img/class15-salt.png)
+From https://www.okta.com/blog/2019/03/what-are-salted-passwords-and-password-hashing/
+
+
 
 
 ----
