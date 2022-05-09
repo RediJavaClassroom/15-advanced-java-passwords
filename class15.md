@@ -57,5 +57,6 @@ From https://auth0.com/blog/hashing-passwords-one-way-road-to-security/
 ----
 
 ## Home assignment
-* 
+* Implement hashing with something stronger than MD5
+
 
