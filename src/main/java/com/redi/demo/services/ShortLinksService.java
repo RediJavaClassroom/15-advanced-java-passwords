@@ -33,6 +33,6 @@ public class ShortLinksService {
 
   public URI expandShortLink(final String key) {
     final ShortLinkEntity entity = repository.findByKey(key);
-    return URI.create(entity.getOriginalUrl());
+    return URI.create(entity.originalUrl);
   }
 }

@@ -12,10 +12,11 @@ import javax.persistence.Table;
 public class ShortLinkEntity {
 
   @Id
-  private String key;
-  private String originalUrl;
-  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-  private User user;
+  public String key;
+  public String originalUrl;
+
+//  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+//  private User user;
 
   protected ShortLinkEntity() {}
 
@@ -28,7 +29,15 @@ public class ShortLinkEntity {
     return key;
   }
 
+  public void setKey(String key) {
+    this.key = key;
+  }
+
   public String getOriginalUrl() {
     return originalUrl;
+  }
+
+  public void setOriginalUrl(String originalUrl) {
+    this.originalUrl = originalUrl;
   }
 }
