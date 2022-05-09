@@ -1,10 +1,7 @@
 package com.redi.demo.repository.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -12,11 +9,8 @@ import javax.persistence.Table;
 public class ShortLinkEntity {
 
   @Id
-  public String key;
-  public String originalUrl;
-
-//  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-//  private User user;
+  private String key;
+  private String originalUrl;
 
   protected ShortLinkEntity() {}
 

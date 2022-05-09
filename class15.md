@@ -21,6 +21,7 @@ mvn clean package
 docker-compose build
 docker-compose up
 ```
+---
 
 Alternatively
 
@@ -32,10 +33,31 @@ docker run --publish 5432:5432 --env POSTGRES_PASSWORD=mysecretpassword --detach
 ----
 
 ## Try application
+
+Create user:
 ```
-curl -X POST http://localhost:8080/links --data '{"url": "https://mkysoft.com"}' -H "Content-Type: application/json"
+curl -X POST http://localhost:8080/users --data '{"email": "test@example.com", "name": "Test", "password": "password"}' -H "Content-Type: application/json" -v
+```
+
+Login user:
+```
+curl -X POST http://localhost:8080/login --data '{"email": "test@example.com", "password": "password"}' -H "Content-Type: application/json" -v
+```
+
+Shorten link:
+Replaces `JSESSIONID` cookie value with the one that is returned from `/login`
+
+```
+curl -X POST http://localhost:8080/links --data '{"url": "https://mkysoft.com"}' -H "Content-Type: application/json"  --cookie "JSESSIONID=D5254338C4C0F61A6FA49B3250D5FA62; Path=/; HttpOnly" -v
+```
+
+Expand link:
+
+```
 curl http://localhost:8080/xxx -v
 ```
+
+Alternatively you can call those endpoints from Postman that should handle cookie passing mechanism automatically.
 
 ----
 

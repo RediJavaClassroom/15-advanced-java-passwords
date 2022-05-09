@@ -13,24 +13,15 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 @ExtendWith(MockitoExtension.class)
 @Testcontainers
 class ShortLinksServiceTest {
 
-    @Mock
-    KeyGenerationService keyGenerationService;
-    @Mock
-    ShortLinkRepository shortLinkRepository;
+    @Mock KeyGenerationService keyGenerationService;
+    @Mock ShortLinkRepository shortLinkRepository;
 
-    @Container
-    private static final PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer("postgres:latest")
-            .withDatabaseName("postgres")
-            .withUsername("postgresr")
-            .withPassword("mysecretpassword");
 
     @Test
     void createShortLinks() {
