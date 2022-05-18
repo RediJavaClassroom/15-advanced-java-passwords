@@ -15,7 +15,6 @@ public class ShortLinksService {
 
   private final String BASE_URL = "http://localhost:8080";
   private final ShortLinkRepository repository;
-  
 
   @Autowired
   public ShortLinksService(final KeyGenerationService keyGenerationService, final ShortLinkRepository repository) {
@@ -24,15 +23,15 @@ public class ShortLinksService {
   }
 
   public ShortLink createShortLink(final CreateShortLinkRequest request) {
-    final var key = keyGenerationService.generateKey();
-    final var entity = new ShortLinkEntity(key, request.originalURL.toString());
+    final String key = keyGenerationService.generateKey();
+    final ShortLinkEntity entity = new ShortLinkEntity(key, request.originalURL.toString());
     repository.save(entity);
-    final var uri = URI.create(String.format("%s/%s", BASE_URL, key));
+    final URI uri = URI.create(String.format("%s/%s", BASE_URL, key));
     return new ShortLink(uri);
   }
 
   public URI expandShortLink(final String key) {
     final ShortLinkEntity entity = repository.findByKey(key);
-    return URI.create(entity.originalUrl);
+    return URI.create(entity.getOriginalUrl());
   }
 }
