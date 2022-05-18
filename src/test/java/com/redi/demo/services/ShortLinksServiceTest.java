@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.mockito.Mockito.when;
 
 import com.redi.demo.model.CreateShortLinkRequest;
+import com.redi.demo.model.ShortLink;
 import com.redi.demo.repository.ShortLinkRepository;
 
 import java.net.URI;
@@ -27,9 +28,8 @@ class ShortLinksServiceTest {
     void createShortLinks() {
         final ShortLinksService shortLinksService = new ShortLinksService(keyGenerationService, shortLinkRepository);
         when(keyGenerationService.generateKey()).thenReturn("xxx");
-        final var request = new CreateShortLinkRequest(URI.create("http://example.com"));
-
-        final var shortLink = shortLinksService.createShortLink(request);
+        final CreateShortLinkRequest request = new CreateShortLinkRequest(URI.create("http://example.com"));
+        final ShortLink shortLink = shortLinksService.createShortLink(request);
 
         assertThat(shortLink.url.toString(), equalTo("http://localhost:8080/xxx"));
     }

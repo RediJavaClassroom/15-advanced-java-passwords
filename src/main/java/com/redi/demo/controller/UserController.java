@@ -39,7 +39,7 @@ public class UserController {
     @PostMapping(path = "/login")
     @ResponseBody
     public User login(@RequestBody UserCredentials credentials) {
-        final var authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+        final Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 credentials.email, credentials.password));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         return userService.getUser(credentials.email);

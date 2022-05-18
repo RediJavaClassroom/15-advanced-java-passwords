@@ -23,10 +23,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/login").permitAll() /// everybody can login
                 .antMatchers(HttpMethod.POST, "/users").permitAll() // everybody can create a user
-                .antMatchers("/users/**").hasRole("ADMIN") // only admins can see users
-                .antMatchers("/links").hasRole("USER") // authenticated users with role USER can shorten links
+                .antMatchers("/users/**").authenticated() // authenticated users
+                .antMatchers("/links").authenticated() // authenticated users
                 .antMatchers(HttpMethod.GET, "/**").permitAll() // everybody can expand the link
-                .anyRequest().hasRole("USER") // default security
+                .anyRequest().authenticated() // default security
                 .and()
                 .httpBasic();
     }
